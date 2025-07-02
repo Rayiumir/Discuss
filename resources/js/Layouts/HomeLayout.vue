@@ -5,7 +5,7 @@
                 <slot name="sidebar"/>
             </div>
             <div class="col-span-5 bg-green-300">
-                <slot name="posts"/>
+                <slot/>
             </div>
         </div>
     </AuthenticatedLayout>
