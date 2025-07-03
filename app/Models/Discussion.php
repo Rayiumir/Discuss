@@ -11,4 +11,10 @@ class Discussion extends Model
     {
         return $this->belongsTo(Topic::class);
     }
+
+    public function isPinned(): bool
+    {
+        return !is_null($this->pinned_at);
+    }
+
 }
