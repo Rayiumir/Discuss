@@ -19,6 +19,8 @@
     </div>
 </template>
 <script setup>
+    import Discussion from "./Discussion.vue";
+
     defineProps({
         discussion: Object
     })

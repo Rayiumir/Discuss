@@ -1,14 +1,12 @@
 <script setup>
-import {Head, usePage} from '@inertiajs/vue3';
+    import {Head, usePage} from '@inertiajs/vue3';
     import HomeLayout from "@/Layouts/HomeLayout.vue";
     import Select from "@/Components/Select.vue";
     import InputLabel from "@/Components/InputLabel.vue";
     import Discussion from "@/Components/Forum/Discussion.vue";
+    import Pagination from "@/Components/Pagination.vue";
     // import * as discussions from "autoprefixer";
-
-
     const page = usePage()
-
     const discussions = page.props.discussions
 
 </script>
@@ -30,6 +28,8 @@ import {Head, usePage} from '@inertiajs/vue3';
             </div>
             <div class="space-y-3">
                 <Discussion v-for="discussion in discussions.data" :key="discussion.id" :discussion="discussion"/>
+
+                <Pagination :pagination="discussions.meta"/>
             </div>
         </div>
         <template #sidebar>
