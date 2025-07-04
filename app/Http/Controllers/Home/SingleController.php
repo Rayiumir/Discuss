@@ -11,6 +11,8 @@ class SingleController extends Controller
 {
     public function __invoke(Discussion $discussion)
     {
+        $discussion->load(['topic']);
+
         return inertia()->render('Home/Show', [
             'discussion' => DiscussionResource::make($discussion)
         ]);
