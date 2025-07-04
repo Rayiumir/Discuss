@@ -25,5 +25,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/', \App\Http\Controllers\Home\HomeController::class)->name('home');
+Route::get('/{discussion:slug}', \App\Http\Controllers\Home\SingleController::class)->name('single.show');
 
 require __DIR__.'/auth.php';
