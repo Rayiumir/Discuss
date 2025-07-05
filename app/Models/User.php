@@ -46,4 +46,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function avatarUrl()
+    {
+        return 'https://www.gravatar.com/avatar/' . md5($this->email) . '.jpg';
+    }
 }
