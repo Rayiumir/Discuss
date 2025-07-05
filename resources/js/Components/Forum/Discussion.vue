@@ -12,8 +12,11 @@
                             {{ discussion.title }}
                         </h1>
                     </div>
-                    <div class="text-gray-500 text-sm mt-3 line-clamp-1">
+                    <div v-if="discussion.post" class="text-gray-500 text-sm mt-3 line-clamp-1">
                         {{ discussion.post.body_preview }}
+                    </div>
+                    <div v-else>
+                        Not Post
                     </div>
                 </div>
                 <div>
