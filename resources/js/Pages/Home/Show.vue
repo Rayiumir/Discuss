@@ -2,11 +2,13 @@
 import {Head, usePage} from '@inertiajs/vue3';
 import HomeLayout from "@/Layouts/HomeLayout.vue";
 import Pagination from "@/Components/Pagination.vue";
+import Post from "@/Components/Forum/Post.vue";
 // import * as discussions from "autoprefixer";
 // const page = usePage()
 // const discussions = page.props.discussions
 defineProps({
-    discussion: Object
+    discussion: Object,
+    posts: Array,
 })
 
 </script>
@@ -14,7 +16,7 @@ defineProps({
 <template>
     <Head :title="discussion.title" />
     <HomeLayout>
-        <div class="space-y-6">
+        <div class="space-y-3">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div class="flex items-center space-x-3">
@@ -28,6 +30,8 @@ defineProps({
                     </div>
                 </div>
             </div>
+
+            <Post v-for="post in posts.data" :key="post.id" :post="post"/>
         </div>
         <template #sidebar>
             Sidebar
