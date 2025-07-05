@@ -31,7 +31,10 @@ defineProps({
                 </div>
             </div>
 
-            <Post v-for="post in posts.data" :key="post.id" :post="post"/>
+            <template v-if="posts.data.length">
+                <Post v-for="post in posts.data" :key="post.id" :post="post"/>
+                <Pagination :pagination="posts.meta"/>
+            </template>
         </div>
         <template #sidebar>
             Sidebar
