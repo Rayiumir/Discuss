@@ -32,5 +32,8 @@ class Discussion extends Model
         return $this->hasOne(Post::class)->whereNull('parent_id');
     }
 
-
+    public function latestPost()
+    {
+        return $this->hasOne(Post::class)->latest();
+    }
 }
