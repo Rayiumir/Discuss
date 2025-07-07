@@ -17,7 +17,7 @@ class SingleController extends Controller
 
         return inertia()->render('Home/Show', [
             'discussion' => DiscussionResource::make($discussion),
-            'posts' => PostResource::collection(Post::whereBelongsTo($discussion)->with(['user', 'discussion'])->oldest()->paginate(1)),
+            'posts' => PostResource::collection(Post::whereBelongsTo($discussion)->with(['user', 'discussion'])->oldest()->paginate(1))
         ]);
     }
 }
