@@ -24,7 +24,9 @@
                     </Link>
                 </div>
                 <div>
-                    Avatars
+                    <div class="flex items-center justify-start -space-x-2">
+                        <img :src="participant.avatar_url" v-for="participant in discussion.participants" :key="participant.id" class="h-6 w-6 rounded-full ring-2 ring-white first-of-type:w-7 first-of-type:h-7" :title="participant.username">
+                    </div>
                 </div>
             </div>
         </div>
