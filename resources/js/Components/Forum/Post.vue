@@ -4,11 +4,11 @@
             <div class="flex-grow">
                 <div class="flex items-start space-x-3">
                     <div class="w-7 flex-shrink-0">
-                        <img :src="post.user.avatar_url" class="w-7 h-7 rounded-full" alt="">
+                        <img :src="post.user?.avatar_url" class="w-7 h-7 rounded-full" alt="" v-if="post.user">
                     </div>
                     <div class="w-full">
                         <div>
-                            <div>{{ post.user.username }}</div>
+                            <div>{{ post.user?.username || '[user deleted]' }}</div>
                             <div class="text-sm text-gray-500">Posted <time :datetime="post.created_at.datetime" :title="post.created_at.datetime">{{ post.created_at.human }}</time></div>
                         </div>
                         <div class="mt-3">
