@@ -22,7 +22,7 @@ class DiscussionResource extends JsonResource
             'post' => PostResource::make($this->whenLoaded('post')),
             'latest_post' => PostResource::make($this->whenLoaded('latestPost')),
             'participants' => PublicUserResource::collection($this->whenLoaded('participants')),
-            'is_pinned' => $this->isPinned()
+            'isPinned' => $this->isPinned()
         ];
     }
 }

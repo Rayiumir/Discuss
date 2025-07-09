@@ -40,4 +40,20 @@ class Discussion extends Model
     {
         return $this->hasManyThrough(User::class, Post::class, 'discussion_id', 'id', 'id', 'user_id');
     }
+
+    public function scopeOrderByLastPost($query): void
+    {
+        $query->orderBy(
+            Post::select('created_at')
+                ->whereColumn('posts.discussion_id', 'discussions.id')
+                ->latest()
+                ->take(1),
+            'desc'
+        );
+    }
+
+    public function scopeOrderByPinned($query): void
+    {
+        $query->orderBy('pinned_at', 'asc');
+    }
 }

@@ -12,7 +12,12 @@ class HomeController extends Controller
     public function __invoke()
     {
         return inertia()->render('Home/Index', [
-            'discussions' => DiscussionResource::collection(Discussion::with(['topic', 'post', 'latestPost.user', 'participants'])->latest()->paginate(10))
+            'discussions' => DiscussionResource::collection(
+                Discussion::with(['topic', 'post', 'latestPost.user', 'participants'])
+                    ->orderByPinned()
+                    ->orderByLastPost()
+                    ->paginate(10)
+            )
         ]);
     }
 }
