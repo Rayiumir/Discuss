@@ -56,4 +56,9 @@ class Discussion extends Model
     {
         $query->orderBy('pinned_at', 'asc');
     }
+
+    public function replies()
+    {
+        return $this->hasMany(Post::class)->whereNotNull('parent_id');
+    }
 }

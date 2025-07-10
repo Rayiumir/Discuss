@@ -14,6 +14,7 @@ class HomeController extends Controller
         return inertia()->render('Home/Index', [
             'discussions' => DiscussionResource::collection(
                 Discussion::with(['topic', 'post', 'latestPost.user', 'participants'])
+                    ->withCount('replies')
                     ->orderByPinned()
                     ->orderByLastPost()
                     ->paginate(10)
