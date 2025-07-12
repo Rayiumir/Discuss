@@ -8,7 +8,13 @@
     import Navigation from "@/Components/Forum/Navigation.vue";
     // import * as discussions from "autoprefixer";
     const page = usePage()
-    const discussions = page.props.discussions
+    // const discussions = page.props.discussions
+    // const query = page.props.query
+
+    defineProps({
+        discussions: Object,
+        query: Object
+    })
 
 </script>
 
@@ -34,7 +40,7 @@
             </div>
         </div>
         <template #sidebar>
-            <Navigation/>
+            <Navigation :query="query"/>
         </template>
     </HomeLayout>
 </template>
