@@ -3,7 +3,7 @@
         <div class="p-6 text-gray-900">
             <ul class="space-y-2">
                 <li>
-                    <Link href="/" :class="{ 'font-bold': !query.filter && $page.url === '/' }">All Discussions</Link>
+                    <Link href="/" :class="{ 'font-bold': !query.filter?.filter && $page.url === '/' }">All Discussions</Link>
                 </li>
                 <li>
                     <Link href="/?filter[noreplies]=1" :class="{ 'font-bold': query.filter?.noreplies }">No replies</Link>
