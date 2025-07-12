@@ -5,6 +5,7 @@
     import InputLabel from "@/Components/InputLabel.vue";
     import Discussion from "@/Components/Forum/Discussion.vue";
     import Pagination from "@/Components/Pagination.vue";
+    import Navigation from "@/Components/Forum/Navigation.vue";
     // import * as discussions from "autoprefixer";
     const page = usePage()
     const discussions = page.props.discussions
@@ -33,7 +34,7 @@
             </div>
         </div>
         <template #sidebar>
-            Sidebar
+            <Navigation/>
         </template>
     </HomeLayout>
 </template>

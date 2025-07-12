@@ -28,7 +28,7 @@ defineProps({
                         </h1>
                     </div>
                     <div class="text-sm mt-3">
-                        {{ pluralize('reply', discussion.replies_count, true)}}
+                        {{ pluralize('reply', discussion.replies_count, true) }}
                     </div>
                 </div>
             </div>
