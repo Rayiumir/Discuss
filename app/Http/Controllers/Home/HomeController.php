@@ -24,6 +24,7 @@ class HomeController extends Controller
                     ->orderByPinned()
                     ->orderByLastPost()
                     ->paginate(10)
+                ->appends($request->query())
             )
         ]);
     }

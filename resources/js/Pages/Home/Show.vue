@@ -4,10 +4,11 @@ import HomeLayout from "@/Layouts/HomeLayout.vue";
 import Pagination from "@/Components/Pagination.vue";
 import Post from "@/Components/Forum/Post.vue";
 import pluralize from "pluralize";
+import Navigation from "@/Components/Forum/Navigation.vue";
 
 defineProps({
     discussion: Object,
-    posts: Array,
+    posts: Array
 })
 
 </script>
