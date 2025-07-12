@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
+use App\Http\QueryFilters\MineQueryFilter;
 use App\Http\QueryFilters\NoRepliesQueryFilter;
+use App\Http\QueryFilters\ParticipatingQueryFilter;
 use App\Http\Resources\DiscussionResource;
 use App\Models\Discussion;
 use Illuminate\Http\Request;
@@ -32,7 +34,9 @@ class HomeController extends Controller
     protected function allowedFilters()
     {
         return [
-            AllowedFilter::custom('noreplies', new NoRepliesQueryFilter())
+            AllowedFilter::custom('noreplies', new NoRepliesQueryFilter()),
+            AllowedFilter::custom('mine', new MineQueryFilter()),
+            AllowedFilter::custom('participating', new ParticipatingQueryFilter())
         ];
     }
 }
