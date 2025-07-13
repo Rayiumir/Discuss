@@ -9,9 +9,11 @@
             </div>
         </div>
     </AuthenticatedLayout>
+    <CreateForm/>
 </template>
 
 <script setup>
     import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
+    import CreateForm from "@/Components/Forum/CreateForm.vue";
 </script>
 
