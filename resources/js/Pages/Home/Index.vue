@@ -8,6 +8,8 @@
     import Navigation from "@/Components/Forum/Navigation.vue";
     import _omitBy  from 'lodash.omitby';
     import _isEmpty from 'lodash.isempty';
+    import useCreateDiscussion from "@/Composables/useCreateDiscussion.js";
+    import PrimaryButton from "@/Components/PrimaryButton.vue";
 
     const page = usePage()
 
@@ -15,6 +17,8 @@
         discussions: Object,
         query: Object
     })
+
+    const { showCreateDiscussion } = useCreateDiscussion()
 
     const filterTopic = (e) => {
         router.visit('/', {
@@ -49,6 +53,7 @@
             </div>
         </div>
         <template #sidebar>
+            <PrimaryButton v-on:click="showCreateDiscussion" class="w-full flex justify-center h-10" v-if="$page.props.auth.user">Create a Discussion</PrimaryButton>
             <Navigation :query="query"/>
         </template>
     </HomeLayout>
