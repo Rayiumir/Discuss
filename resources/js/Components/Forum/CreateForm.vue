@@ -1,5 +1,5 @@
 <template>
-    <FixedForm v-if="visible">
+    <FixedForm v-if="visible" v-on:submit.prevent="createDiscussion">
         <template v-slot:header>
             <div class="flex items-center justify-between">
                 <h1 class="text-lg font-medium">New discussion</h1>
@@ -49,4 +49,12 @@
     import useCreateDiscussion from "@/Composables/useCreateDiscussion";
 
     const { form, visible, hideCreateDiscussion } = useCreateDiscussion()
+    const createDiscussion = () =>  {
+        form.post(route('discussion.store'), {
+            onSuccess: () => {
+                form.reset()
+                hideCreateDiscussion()
+            }
+        })
+    }
 </script>

@@ -3,9 +3,25 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Discussion extends Model
 {
+    protected $fillable = [
+        'title',
+        'slug'
+    ];
+    protected static function booted(): void
+    {
+        static::created(function ($discussion) {
+            $discussion->update(['slug' => $discussion->title]);
+        });
+    }
+
+    public function setSlugAttribute($value): void
+    {
+        $this->attributes['slug'] = $this->id . '-' . Str::slug($value);
+    }
     public function topic(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Topic::class);
