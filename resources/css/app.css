@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.markdown p{
+    @apply mb-2;
+}
+
+code{
+     @apply whitespace-pre-wrap leading-loose;
+}
+.shiki{
+    @apply text-sm p-6 rounded-lg my-4;
+}

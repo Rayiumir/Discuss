@@ -8,7 +8,8 @@ import Navigation from "@/Components/Forum/Navigation.vue";
 
 defineProps({
     discussion: Object,
-    posts: Array
+    posts: Array,
+    query: Object
 })
 
 </script>
@@ -40,7 +41,7 @@ defineProps({
             </template>
         </div>
         <template #sidebar>
-            Sidebar
+            <Navigation :query="query"/>
         </template>
     </HomeLayout>
 </template>

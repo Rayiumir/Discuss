@@ -11,12 +11,13 @@ use Illuminate\Http\Request;
 
 class SingleController extends Controller
 {
-    public function __invoke(Discussion $discussion)
+    public function __invoke(Discussion $discussion, Request $request)
     {
         $discussion->load(['topic']);
         $discussion->loadCount('replies');
 
         return inertia()->render('Home/Show', [
+            'query' => $request->query(),
             'discussion' => DiscussionResource::make($discussion),
             'posts' => PostResource::collection(Post::whereBelongsTo($discussion)
                 ->with(['user', 'discussion'])
