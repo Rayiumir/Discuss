@@ -6,7 +6,7 @@
                 <button v-on:click="hideCreateDiscussion">&times;</button>
             </div>
         </template>
-        <template v-slot:main>
+        <template v-slot:main="{ markdownPreviewEnabled }">
             <div class="flex items-start space-x-3">
                 <div class="flex-grow">
                     <div>
@@ -29,7 +29,7 @@
             </div>
             <div class="mt-4">
                 <InputLabel for="body" value="Body" class="sr-only"></InputLabel>
-                <Textarea name="body" id="body" cols="6" rows="4" class="w-full" v-model="form.body"></Textarea>
+                <Textarea v-if="!markdownPreviewEnabled" name="body" id="body" class="w-full h-48 align-top" v-model="form.body"></Textarea>
                 <InputError class="mt-2" :message="form.errors.body"></InputError>
             </div>
         </template>
