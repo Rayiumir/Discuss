@@ -29,6 +29,11 @@ import Svg from "@/Components/Svg.vue";
 
 const { form, visible, hideCreatePost, discussion } = useCreatePost()
 const createPost = () =>  {
-
+    form.post(route('posts.store', discussion.value), {
+        onSuccess: () => {
+            form.reset()
+            hideCreatePost()
+        }
+    })
 }
 </script>

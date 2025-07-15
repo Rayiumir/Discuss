@@ -30,6 +30,7 @@ Route::post('/markdown', \App\Http\Controllers\Home\MarkdownController::class)->
 
 Route::middleware('auth')->group(function () {
     Route::post('/discussion', \App\Http\Controllers\Home\DiscussionController::class)->name('discussion.store');
+    Route::post('/discussion/{discussion}/posts', \App\Http\Controllers\Home\PostController::class)->name('posts.store');
 });
 
 require __DIR__.'/auth.php';

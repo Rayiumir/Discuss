@@ -26,7 +26,7 @@ class DiscussionResource extends JsonResource
             'replies_count' => $this->replies_count,
             'isPinned' => $this->isPinned(),
             'user_can' => [
-                'reply' => auth()->user()->can('reply', $this->resource),
+                'reply' => auth()->check() && auth()->user()->can('reply', $this->resource),
             ]
         ];
     }
