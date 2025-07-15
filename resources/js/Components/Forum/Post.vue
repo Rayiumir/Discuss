@@ -14,6 +14,11 @@
                         <div class="mt-3">
                             <div v-html="post.body_markdown" class="markdown"></div>
                         </div>
+                        <div class="flex items-center space-x-3">
+                            <span v-if="post.discussion.user_can.reply">
+                                <button v-on:click="showCreatePost(post.discussion)" class="text-indigo-500 text-sm">Reply</button>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -22,7 +27,9 @@
 </template>
 
 <script setup>
-    import {Link} from "@inertiajs/vue3";
+    import useCreatePost from "@/Composables/useCreatePost.js";
+
+    const {showCreatePost} = useCreatePost()
 
     defineProps({
         post: Object

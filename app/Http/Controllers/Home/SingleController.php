@@ -13,7 +13,7 @@ class SingleController extends Controller
 {
     public function __invoke(Discussion $discussion, Request $request)
     {
-        $discussion->load(['topic']);
+        $discussion->load(['topic', 'posts.discussion']);
         $discussion->loadCount('replies');
 
         return inertia()->render('Home/Show', [

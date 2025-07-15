@@ -45,7 +45,7 @@ defineProps({
             </template>
         </div>
         <template #sidebar>
-            <PrimaryButton v-on:click="showCreatePost(discussion)" class="w-full flex justify-center h-10" v-if="$page.props.auth.user">Reply to discussion</PrimaryButton>
+            <PrimaryButton v-on:click="showCreatePost(discussion)" class="w-full flex justify-center h-10" v-if="discussion.user_can.reply">Reply to discussion</PrimaryButton>
             <Navigation :query="query"/>
         </template>
     </HomeLayout>
