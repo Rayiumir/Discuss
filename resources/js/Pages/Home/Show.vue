@@ -5,6 +5,10 @@ import Pagination from "@/Components/Pagination.vue";
 import Post from "@/Components/Forum/Post.vue";
 import pluralize from "pluralize";
 import Navigation from "@/Components/Forum/Navigation.vue";
+import PrimaryButton from "@/Components/PrimaryButton.vue";
+import useCreatePost from "@/Composables/useCreatePost.js";
+
+const {showCreatePost} = useCreatePost();
 
 defineProps({
     discussion: Object,
@@ -41,6 +45,7 @@ defineProps({
             </template>
         </div>
         <template #sidebar>
+            <PrimaryButton v-on:click="showCreatePost(discussion)" class="w-full flex justify-center h-10" v-if="$page.props.auth.user">Reply to discussion</PrimaryButton>
             <Navigation :query="query"/>
         </template>
     </HomeLayout>

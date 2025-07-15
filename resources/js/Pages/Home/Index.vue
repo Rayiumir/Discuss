@@ -53,7 +53,7 @@
             </div>
         </div>
         <template #sidebar>
-            <PrimaryButton v-on:click="showCreateDiscussion" class="w-full flex justify-center h-10" v-if="$page.props.auth.user">Create a Discussion</PrimaryButton>
+            <PrimaryButton v-on:click="showCreateDiscussion" class="w-full flex justify-center h-10" v-if="$page.props.auth.user">Start a discussion</PrimaryButton>
             <Navigation :query="query"/>
         </template>
     </HomeLayout>

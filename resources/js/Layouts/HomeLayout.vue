@@ -10,10 +10,12 @@
         </div>
     </AuthenticatedLayout>
     <CreateForm/>
+    <CreatePost/>
 </template>
 
 <script setup>
     import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
     import CreateForm from "@/Components/Forum/CreateForm.vue";
+    import CreatePost from "@/Components/Forum/CreatePost.vue";
 </script>
 
