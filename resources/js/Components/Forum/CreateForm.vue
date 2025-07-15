@@ -3,7 +3,7 @@
         <template v-slot:header>
             <div class="flex items-center justify-between">
                 <h1 class="text-lg font-medium">New discussion</h1>
-                <button v-on:click="hideCreateDiscussion">&times;</button>
+                <button v-on:click="hideCreateDiscussion"><Svg name="icon-close" class="w-5 h-5"></Svg></button>
             </div>
         </template>
         <template v-slot:main="{ markdownPreviewEnabled }">
@@ -46,6 +46,7 @@
     import Textarea from "@/Components/Textarea.vue";
     import PrimaryButton from "@/Components/PrimaryButton.vue";
     import useCreateDiscussion from "@/Composables/useCreateDiscussion";
+    import Svg from "@/Components/Svg.vue";
 
     const { form, visible, hideCreateDiscussion } = useCreateDiscussion()
     const createDiscussion = () =>  {
