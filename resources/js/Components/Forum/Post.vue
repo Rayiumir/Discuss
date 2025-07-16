@@ -1,5 +1,5 @@
 <template>
-    <div  class="block bg-white overflow-hidden shadow-sm sm:rounded-lg">
+    <div :id="`post-${post.id}`" class="block bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 text-gray-900 flex items-center space-x-3">
             <div class="flex-grow">
                 <div class="flex items-start space-x-3">

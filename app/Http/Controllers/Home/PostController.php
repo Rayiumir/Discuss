@@ -17,6 +17,6 @@ class PostController extends Controller
         $post->parent()->associate($discussion->post);
         $post->save();
 
-        return to_route('single.show', $discussion);
+        return redirect(route('single.show', $discussion) . '?post=' . $post->id);
     }
 }
