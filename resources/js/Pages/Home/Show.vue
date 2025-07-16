@@ -8,11 +8,11 @@ import Navigation from "@/Components/Forum/Navigation.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import useCreatePost from "@/Composables/useCreatePost.js";
 import { onMounted, onUpdated, nextTick, watch } from "vue";
-import VueScrollto from 'vue-scrollto';
+import ScrollTos from 'vue-scrollto';
 
 const {showCreatePost} = useCreatePost();
 
-defineProps({
+const props = defineProps({
     discussion: Object,
     posts: Array,
     query: Object,
@@ -25,7 +25,7 @@ const scrollToPost = (postId) => {
     }
 
     nextTick(() => {
-        VueScrollTo.scrollTo(`#post-${postId}`, 500, { offset: -50 })
+        ScrollTos.scrollTo(`#post-${postId}`, 500, { offset: -50 })
     })
 }
 
