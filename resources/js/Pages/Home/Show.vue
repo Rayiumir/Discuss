@@ -1,43 +1,3 @@
-<script setup>
-import {Head, usePage} from '@inertiajs/vue3';
-import HomeLayout from "@/Layouts/HomeLayout.vue";
-import Pagination from "@/Components/Pagination.vue";
-import Post from "@/Components/Forum/Post.vue";
-import pluralize from "pluralize";
-import Navigation from "@/Components/Forum/Navigation.vue";
-import PrimaryButton from "@/Components/PrimaryButton.vue";
-import useCreatePost from "@/Composables/useCreatePost.js";
-import { onMounted, onUpdated, nextTick, watch } from "vue";
-import ScrollTos from 'vue-scrollto';
-
-const {showCreatePost} = useCreatePost();
-
-const props = defineProps({
-    discussion: Object,
-    posts: Array,
-    query: Object,
-    postId: Number
-})
-
-const scrollToPost = (postId) => {
-    if (!postId) {
-        return
-    }
-
-    nextTick(() => {
-        ScrollTos.scrollTo(`#post-${postId}`, 500, { offset: -50 })
-    })
-}
-
-onMounted(() => {
-    scrollToPost(props.postId)
-})
-
-watch(() => props.postId, (postId) => {
-    scrollToPost(postId)
-})
-</script>
-
 <template>
     <Head :title="discussion.title" />
     <HomeLayout>
@@ -70,4 +30,44 @@ watch(() => props.postId, (postId) => {
         </template>
     </HomeLayout>
 </template>
+
+<script setup>
+    import {Head, usePage} from '@inertiajs/vue3';
+    import HomeLayout from "@/Layouts/HomeLayout.vue";
+    import Pagination from "@/Components/Pagination.vue";
+    import Post from "@/Components/Forum/Post.vue";
+    import pluralize from "pluralize";
+    import Navigation from "@/Components/Forum/Navigation.vue";
+    import PrimaryButton from "@/Components/PrimaryButton.vue";
+    import useCreatePost from "@/Composables/useCreatePost.js";
+    import { onMounted, onUpdated, nextTick, watch } from "vue";
+    import ScrollTos from 'vue-scrollto';
+
+    const {showCreatePost} = useCreatePost();
+
+    const props = defineProps({
+        discussion: Object,
+        posts: Array,
+        query: Object,
+        postId: Number
+    })
+
+    const scrollToPost = (postId) => {
+        if (!postId) {
+            return
+        }
+
+        nextTick(() => {
+            ScrollTos.scrollTo(`#post-${postId}`, 500, { offset: -50 })
+        })
+    }
+
+    onMounted(() => {
+        scrollToPost(props.postId)
+    })
+
+    watch(() => props.postId, (postId) => {
+        scrollToPost(postId)
+    })
+</script>
 
