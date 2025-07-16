@@ -7,15 +7,35 @@ import pluralize from "pluralize";
 import Navigation from "@/Components/Forum/Navigation.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import useCreatePost from "@/Composables/useCreatePost.js";
+import { onMounted, onUpdated, nextTick, watch } from "vue";
+import VueScrollto from 'vue-scrollto';
 
 const {showCreatePost} = useCreatePost();
 
 defineProps({
     discussion: Object,
     posts: Array,
-    query: Object
+    query: Object,
+    postId: Number
 })
 
+const scrollToPost = (postId) => {
+    if (!postId) {
+        return
+    }
+
+    nextTick(() => {
+        VueScrollTo.scrollTo(`#post-${postId}`, 500, { offset: -50 })
+    })
+}
+
+onMounted(() => {
+    scrollToPost(props.postId)
+})
+
+watch(() => props.postId, (postId) => {
+    scrollToPost(postId)
+})
 </script>
 
 <template>
