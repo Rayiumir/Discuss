@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Laravel\Scout\Searchable;
 
 class Discussion extends Model
 {
+    use Searchable;
     protected $fillable = [
         'title',
         'slug'
@@ -81,5 +83,10 @@ class Discussion extends Model
     public function solution(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Post::class, 'solution_post_id');
+    }
+
+    public function toSearchableArray(): array
+    {
+        return $this->only('id', 'title');
     }
 }
