@@ -1,5 +1,5 @@
 <template>
-    <div :id="`post-${post.id}`" class="block bg-white overflow-hidden shadow-sm sm:rounded-lg">
+    <div :id="`post-${post.id}`" class="relative bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 text-green-900 flex items-start space-x-3 border-2" :class="{ 'border-green-800': isSolution, 'border-transparent': !isSolution }">
         <div class="p-6 text-gray-900 flex items-center space-x-3">
             <div class="flex-grow">
                 <div class="flex items-start space-x-3">
@@ -48,6 +48,7 @@
                 </div>
             </div>
         </div>
+        <div class="absolute right-0 top-0 bg-green-800 text-gray-100 px-3 py-1 text-xs uppercase tracking-wide font-semibold rounded-bl shadow-sm" v-if="isSolution">Best answer</div>
     </div>
 </template>
 
