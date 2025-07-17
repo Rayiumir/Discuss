@@ -26,6 +26,7 @@ class PostResource extends JsonResource
             'body_markdown' => app(MarkdownRenderer::class)->toHtml($this->body),
             'user_can' => [
                 'edit' => auth()->check() && auth()->user()->can('edit', $this->resource),
+                'delete' => auth()->check() && auth()->user()->can('delete', $this->resource),
             ]
         ];
     }

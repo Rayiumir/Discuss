@@ -32,6 +32,9 @@
                             <span v-if="post.user_can.edit">
                                 <button v-on:click="editing = true" class="text-indigo-500 text-sm">Edit</button>
                             </span>
+                            <span v-if="post.user_can.delete">
+                                <button v-on:click="deletePost" class="text-indigo-500 text-sm">Delete</button>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -42,7 +45,7 @@
 
 <script setup>
     import useCreatePost from "@/Composables/useCreatePost.js";
-    import {useForm} from "@inertiajs/vue3";
+    import {router, useForm} from "@inertiajs/vue3";
     import {ref} from "vue";
     import Textarea from "@/Components/Textarea.vue";
     import InputLabel from "@/Components/InputLabel.vue";
@@ -70,5 +73,12 @@
         })
     }
 
+    const deletePost = () => {
+        if (window.confirm('Are you sure?')) {
+            router.delete(route('posts.destroy', props.post), {
+                preserveScroll: true
+            })
+        }
+    }
 </script>
 
