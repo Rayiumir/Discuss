@@ -12,3 +12,11 @@ code{
 .shiki{
     @apply text-sm p-6 rounded-lg my-4;
 }
+
+.mention-item {
+    @apply p-3 leading-none cursor-pointer;
+}
+
+.mention-selected {
+    @apply bg-gray-100 cursor-pointer;
+}
