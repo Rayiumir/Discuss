@@ -19,9 +19,14 @@
                         Not Post
                     </div>
 
-                    <Link :href="`${route('single.show', discussion)}?post=${discussion.latest_post.id}`" class="inline-block text-sm mt-6">
-                        Last post by {{ discussion.latest_post.user?.username || '[user deleted]'}} at <time :datetime="discussion.latest_post.created_at.datetime" :title="discussion.latest_post.created_at.datetime">{{ discussion.latest_post.created_at.human }}</time>
-                    </Link>
+                    <div v-if="discussion.latest_post" class="inline-block text-sm mt-6">
+                        <Link :href="`${route('single.show', discussion)}?post=${discussion.latest_post.id}`">
+                            Last post by {{ discussion.latest_post.user?.username || '[user deleted]'}} at <time :datetime="discussion.latest_post.created_at.datetime" :title="discussion.latest_post.created_at.datetime">{{ discussion.latest_post.created_at.human }}</time>
+                        </Link>
+                    </div>
+                    <div v-else class="text-sm mt-6">
+                        No posts yet
+                    </div>
 
                 </div>
                 <div class="flex-shrink-0 flex flex-col items-end">

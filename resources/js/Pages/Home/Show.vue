@@ -11,6 +11,11 @@
                                 [Pinned]
                             </template>
                             {{ discussion.title }}
+                            <div>
+                                <span v-if="discussion.user_can.delete">
+                                    <button class="text-indigo-700 text-sm" v-on:click="deleteDiscussion">Delete</button>
+                                </span>
+                            </div>
                         </h1>
                     </div>
                     <div class="text-sm mt-3">
@@ -32,7 +37,7 @@
 </template>
 
 <script setup>
-    import {Head, usePage} from '@inertiajs/vue3';
+import {Head, router} from '@inertiajs/vue3';
     import HomeLayout from "@/Layouts/HomeLayout.vue";
     import Pagination from "@/Components/Pagination.vue";
     import Post from "@/Components/Forum/Post.vue";
@@ -69,5 +74,11 @@
     watch(() => props.postId, (postId) => {
         scrollToPost(postId)
     })
+
+    const deleteDiscussion = () => {
+        if (window.confirm('Are you sure?')) {
+            router.delete(route('discussions.destroy', props.discussion))
+        }
+    }
 </script>
 
