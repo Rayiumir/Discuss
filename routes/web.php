@@ -31,6 +31,7 @@ Route::post('/markdown', \App\Http\Controllers\Home\MarkdownController::class)->
 Route::middleware('auth')->group(function () {
     Route::post('/discussion', \App\Http\Controllers\Home\DiscussionController::class)->name('discussion.store');
     Route::delete('/discussion/{discussion}', \App\Http\Controllers\Home\DiscussionDestroyController::class)->name('discussions.destroy');
+    Route::patch('/discussions/{discussion}/solution', \App\Http\Controllers\Home\DiscussionSolutionController::class)->name('discussions.solution.patch');
     Route::post('/discussion/{discussion}/posts', \App\Http\Controllers\Home\PostController::class)->name('posts.store');
     Route::patch('/posts/{post}', \App\Http\Controllers\Home\PostEditController::class)->name('posts.patch');
     Route::delete('/posts/{post}', \App\Http\Controllers\Home\PostDestroyController::class)->name('posts.destroy');

@@ -35,6 +35,14 @@
                             <span v-if="post.user_can.delete">
                                 <button v-on:click="deletePost" class="text-indigo-500 text-sm">Delete</button>
                             </span>
+                            <span v-if="post.discussion.user_can.solve">
+                                <button
+                                    class="text-indigo-500 text-sm"
+                                    v-on:click="router.patch(route('discussions.solution.patch', post.discussion), { post_id: isSolution ? null : post.id }, { preserveScroll: true })"
+                                >
+                                    {{ isSolution ? 'Unmark' : 'Mark' }} best solution
+                                </button>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -55,7 +63,8 @@
     const {showCreatePost} = useCreatePost()
 
     const props = defineProps({
-        post: Object
+        post: Object,
+        isSolution: Boolean
     })
 
     const editing = ref(false)

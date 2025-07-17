@@ -77,4 +77,9 @@ class Discussion extends Model
     {
         return $this->hasMany(Post::class)->whereNotNull('parent_id');
     }
+
+    public function solution(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Post::class, 'solution_post_id');
+    }
 }

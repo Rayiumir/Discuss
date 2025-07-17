@@ -16,4 +16,9 @@ class DiscussionPolicy
     {
         return true;
     }
+
+    public function solve(User $user, Discussion $discussion): bool
+    {
+        return $user->id === $discussion->user_id;
+    }
 }

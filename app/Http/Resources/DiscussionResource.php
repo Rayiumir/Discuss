@@ -23,11 +23,13 @@ class DiscussionResource extends JsonResource
             'post' => PostResource::make($this->whenLoaded('post')),
             'latest_post' => PostResource::make($this->whenLoaded('latestPost')),
             'participants' => PublicUserResource::collection($this->whenLoaded('participants')),
+            'solution' => PostResource::make($this->whenLoaded('solution')),
             'replies_count' => $this->replies_count,
             'isPinned' => $this->isPinned(),
             'user_can' => [
                 'reply' => auth()->check() && auth()->user()->can('reply', $this->resource),
                 'delete' => auth()->check() && auth()->user()->can('delete', $this->resource),
+                'solve' => auth()->check() && auth()->user()->can('solve', $this->resource),
             ]
         ];
     }
