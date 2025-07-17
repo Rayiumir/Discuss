@@ -8,6 +8,7 @@
     import Navigation from "@/Components/Forum/Navigation.vue";
     import _omitBy  from 'lodash.omitby';
     import _isEmpty from 'lodash.isempty';
+    import _debounce from 'lodash.debounce';
     import useCreateDiscussion from "@/Composables/useCreateDiscussion.js";
     import PrimaryButton from "@/Components/PrimaryButton.vue";
     import TextInput from "@/Components/TextInput.vue";
@@ -33,11 +34,16 @@
 
     const searchQuery = ref(props.query.search || '')
 
-    watch(searchQuery, (query) => {
+
+    const handleSearchInput = _debounce((query) => {
         router.reload({
             data: { search: query },
             preserveScroll: true
         })
+    }, 500)
+
+    watch(searchQuery, (query) => {
+        handleSearchInput(query)
     })
 
 </script>
