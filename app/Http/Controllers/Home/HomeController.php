@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
+use App\Http\QueryFilters\MentionedQueryFilter;
 use App\Http\QueryFilters\MineQueryFilter;
 use App\Http\QueryFilters\NoRepliesQueryFilter;
 use App\Http\QueryFilters\ParticipatingQueryFilter;
@@ -48,6 +49,7 @@ class HomeController extends Controller
             AllowedFilter::custom('topic', new TopicQueryFilter()),
             AllowedFilter::custom('solved', new SolvedQueryFilter()),
             AllowedFilter::custom('unsolved', new UnSolvedQueryFilter()),
+            AllowedFilter::custom('mentioned', new MentionedQueryFilter())
         ];
     }
 }
