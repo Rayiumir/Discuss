@@ -11,10 +11,10 @@
                             <div>{{ post.user?.username || '[user deleted]' }}</div>
                             <div class="text-sm text-gray-500">Posted <time :datetime="post.created_at.datetime" :title="post.created_at.datetime">{{ post.created_at.human }}</time></div>
                         </div>
-                        <div class="mt-3">
+                        <div class="mt-3 mb-3">
                             <form v-on:submit.prevent="editPost" v-if="editing">
                                 <InputLabel for="body" value="body" class="sr-only">Edit Post</InputLabel>
-                                <Textarea v-model="editForm.body" id="body" class="w-full" rows="8"/>
+                                <Textarea v-model="editForm.body" id="body" class="w-full" cols="70" rows="8"/>
                                 <InputError  class="mt-2" :message="editForm.errors.body"/>
                                 <div class="mt-3 flex items-center space-x-3">
                                     <PrimaryButton>
