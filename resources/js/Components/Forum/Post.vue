@@ -27,7 +27,7 @@
                         </div>
                         <div class="flex items-center space-x-3">
                             <span v-if="post.discussion.user_can.reply">
-                                <button v-on:click="showCreatePost(post.discussion)" class="text-indigo-500 text-sm">Reply</button>
+                                <button v-on:click="showCreatePost(post.discussion, post.user)" class="text-indigo-500 text-sm">Reply</button>
                             </span>
                             <span v-if="post.user_can.edit">
                                 <button v-on:click="editing = true" class="text-indigo-500 text-sm">Edit</button>
