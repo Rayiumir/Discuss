@@ -13,6 +13,11 @@ class Discussion extends Model
         'title',
         'slug'
     ];
+
+    public function toSearchableArray(): array
+    {
+        return $this->only('id', 'title');
+    }
     protected static function booted(): void
     {
         static::created(function ($discussion) {
@@ -83,10 +88,5 @@ class Discussion extends Model
     public function solution(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Post::class, 'solution_post_id');
-    }
-
-    public function toSearchableArray(): array
-    {
-        return $this->only('id', 'title');
     }
 }

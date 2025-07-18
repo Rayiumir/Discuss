@@ -3,7 +3,10 @@ import { MeiliSearch } from 'meilisearch'
 
 const client = new MeiliSearch({
     host: import.meta.env.VITE_MEILISEARCH_HOST,
-    apiKey: import.meta.env.VITE_MEILISEARCH_PUBLIC_KEY
+    apiKey: import.meta.env.VITE_MEILISEARCH_PUBLIC_KEY,
+    headers: {
+        'Authorization': `Bearer ${import.meta.env.VITE_MEILISEARCH_PUBLIC_KEY}`
+    }
 })
 
 const mentionSearchResults = ref([])
