@@ -43,9 +43,9 @@ npm run dev
 <table class="table">
   <thead>
     <tr>
-      <th scope="col" width="1000px">Dashboard</th>
-      <th scope="col" width="1000px">Best Answer</th>
-      <th scope="col" width="1000px">Discuss Index</th>
+      <th scope="col" width="1000px">New Discussion</th>
+      <th scope="col" width="1000px">Discuss Replying</th>
+      <th scope="col" width="1000px">Discuss Single</th>
     </tr>
   </thead>
   <tbody>
