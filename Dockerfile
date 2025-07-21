@@ -28,4 +28,4 @@ RUN git clone ${GIT_REPO_URL} . \
 
 COPY . .
 
-CMD ["/bin/sh", "-c", "php artisan key:generate && apache2-foreground"]
+CMD ["apache2-foreground"]
