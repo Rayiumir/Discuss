@@ -4,6 +4,7 @@ This project is a modern and user-friendly forum application developed using cut
 
 # Installation
 
+## Typical installation
 ```bash
 git clone https://github.com/Rayiumir/Discuss.git
 cd Discuss/
@@ -16,6 +17,18 @@ php artisan serve
 npm run dev
 ```
 
+## Installing with Docker
+```bash
+mkdir discuss -p && cd discuss && \
+curl  https://raw.githubusercontent.com/Rayiumir/Discuss/refs/heads/main/Dockerfile > Dockerfile && \
+docker build . --tag=discuss:latest && \
+curl https://raw.githubusercontent.com/Rayiumir/Discuss/refs/heads/main/.env.example > .env && mkdir storage -p && \
+HASH_DOCKER=$(docker run -d -p 8019:80 -v $(pwd)/.env:/var/www/html/.env -v $(pwd)/storage:/var/www/html/storage/app discuss  | head -c 64) && \
+docker exec $HASH_DOCKER  php artisan key:generate && \
+docker exec $HASH_DOCKER  php artisan migrate --seed && \
+docker exec $HASH_DOCKER  chmod -R 775 database/database.sqlite && \
+docker exec $HASH_DOCKER  chown -R www-data:www-data database/database.sqlite
+```
 # Screenshots
 
 <table class="table">
